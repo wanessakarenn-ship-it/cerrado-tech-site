@@ -1,0 +1,15 @@
+# Arquivos do sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Arquivos temporários do Office (Word/Excel/PDF temporários)
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# Pastas de log e temporários de desenvolvimento
+node_modules/
+.vscode/
+.idea/
+*.log

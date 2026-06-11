@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre em Contato — Cerrado Tecnologia</title>
+    <meta name="description" content="Entre em contato com a equipe da Cerrado Tecnologia. Envie uma mensagem ou ligue para agendar um diagnóstico gratuito.">
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Padronizado -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#con-grad)" />
+                    <path d="M12 28L20 12L28 28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 22H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="20" cy="12" r="3" fill="#FF8C00"/>
+                    <defs>
+                        <linearGradient id="con-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF6600"/>
+                            <stop offset="1" stop-color="#FFB300"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">Cerrado <span class="highlight">Tech</span></span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="solucoes.html">Soluções</a></li>
+                    <li><a href="segmentos.html">Segmentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+
+            <a href="contato.html" class="btn btn-primary btn-nav-desktop">Diagnóstico Gratuito</a>
+        </div>
+    </header>
+
+    <!-- Introdução da Página -->
+    <section class="page-header-intro text-center">
+        <div class="container">
+            <span class="section-tag">Canais de Atendimento</span>
+            <h1>Entre em contato</h1>
+            <p>Estamos prontos para entender sua necessidade operacional, tirar suas dúvidas e indicar a melhor solução de automação e gestão.</p>
+        </div>
+    </section>
+
+    <!-- Estrutura de Contatos e Formulário -->
+    <section class="container">
+        <div class="contact-intro-grid">
+            
+            <!-- Canais Diretos de Contato -->
+            <div class="contact-blocks">
+                <!-- Canal Telefone -->
+                <div class="contact-info-card">
+                    <div style="font-size: 1.5rem; opacity: 0.8;">📞</div>
+                    <div>
+                        <h3>Telefone Comercial</h3>
+                        <p><a href="tel:6239271070">(62) 3927-1070</a> / <a href="tel:62992171070">(62) 99217-1070</a></p>
+                    </div>
+                </div>
+
+                <!-- Canal E-mail -->
+                <div class="contact-info-card">
+                    <div style="font-size: 1.5rem; opacity: 0.8;">✉️</div>
+                    <div>
+                        <h3>E-mail Geral</h3>
+                        <p><a href="mailto:comercial@cerradotech.com.br">comercial@cerradotech.com.br</a></p>
+                    </div>
+                </div>
+
+                <!-- Canal Endereço -->
+                <div class="contact-info-card">
+                    <div style="font-size: 1.5rem; opacity: 0.8;">📍</div>
+                    <div>
+                        <h3>Endereço</h3>
+                        <p style="font-weight: 500; color: var(--text-muted); font-size: 0.95rem;">Rua Laranjeiras, Qd. 6, Lt. 7, St. C. Sul, Aparecida de Goiânia - GO, CEP: 74917-170</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário de Contato Limpo B2B -->
+            <div class="contact-form-b2b">
+                <!-- Formulário inicial -->
+                <form id="b2b-contact-form">
+                    <div class="form-header">
+                        <h2>Envie sua Mensagem</h2>
+                        <p>Preencha os campos abaixo e entraremos em contato rapidamente.</p>
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="name">Nome completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="email">E-mail Corporativo</label>
+                        <input type="email" id="email" name="email" required placeholder="exemplo@empresa.com">
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="phone">Telefone / WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(62) 99999-9999">
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="segment">Segmento de Interesse</label>
+                        <select id="segment" name="segment" required>
+                            <option value="" disabled selected>Selecione o segmento</option>
+                            <option value="postos">Postos de Combustíveis</option>
+                            <option value="redes">Redes de Postos</option>
+                            <option value="gestores">Gestores Operacionais</option>
+                            <option value="hoteis">Hotéis</option>
+                            <option value="pousadas">Pousadas</option>
+                            <option value="resorts">Resorts</option>
+                            <option value="clubes">Clubes Recreativos</option>
+                            <option value="parques">Parques Aquáticos</option>
+                            <option value="outros">Outros Segmentos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Descreva brevemente sua necessidade..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensagem</button>
+                </form>
+
+                <!-- Estado de envio bem-sucedido (escondido) -->
+                <div class="form-success-message hidden" id="form-success-state">
+                    <div class="form-success-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Mensagem Recebida!</h3>
+                    <p>Agradecemos o seu contato. O seu desafio foi encaminhado para a nossa equipe comercial.</p>
+                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 24px;">
+                        <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px;">Precisa de retorno urgente?</p>
+                        <a href="#" class="btn btn-primary" id="success-wa-btn" target="_blank" style="background: var(--accent-green); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); border-color: transparent;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.725-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.859-4.42 9.863-9.864.002-2.637-1.017-5.114-2.872-6.973-1.857-1.859-4.335-2.88-6.97-2.88-5.442 0-9.866 4.42-9.87 9.865-.001 1.816.48 3.59 1.39 5.169l-1.011 3.693 3.795-.996zM17.487 14.47c-.3-.15-1.77-.874-2.034-.969-.264-.096-.456-.145-.648.15-.191.293-.741.93-.909 1.12-.168.19-.336.213-.636.064-.3-.15-1.266-.467-2.41-1.487-.89-.793-1.49-1.773-1.664-2.07-.173-.3-.018-.462.13-.61.135-.133.3-.349.45-.523.15-.174.2-.299.3-.498.1-.2.05-.374-.025-.524-.075-.15-.648-1.56-.888-2.137-.233-.56-.47-.482-.648-.492-.167-.008-.36-.01-.55-.01-.19 0-.5.07-.76.361-.26.29-1 .977-1 2.38 0 1.402 1.02 2.756 1.163 2.95.143.19 2.01 3.069 4.871 4.305.681.29 1.213.465 1.626.595.685.22 1.31.189 1.802.115.548-.081 1.77-.723 2.02-1.417.25-.693.25-1.288.174-1.417-.075-.129-.27-.207-.57-.357z"/>
+                            </svg>
+                            Falar no WhatsApp Comercial
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rodapé Completo Padronizado -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="url(#footer-grad-l)" />
+                        <path d="M12 28L20 12L28 28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 22H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="20" cy="12" r="3" fill="#FF8C00"/>
+                        <defs>
+                            <linearGradient id="footer-grad-l" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FF6600"/>
+                                <stop offset="1" stop-color="#FFB300"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">Cerrado <span class="highlight">Tech</span></span>
+                </a>
+                <p class="brand-tagline">Tecnologia, automação e gestão para empresas que precisam de controle operacional estável e eficiência de verdade.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="solucoes.html">Soluções</a></li>
+                    <li><a href="segmentos.html">Segmentos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Fale Conosco</h4>
+                <p>📞 (62) 3927-1070 / (62) 99217-1070</p>
+                <p>✉️ comercial@cerradotech.com.br</p>
+                <p>📍 Rua Laranjeiras, Qd. 6, Lt. 7, St. C. Sul, Aparecida de Goiânia - GO, CEP: 74917-170</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <span>© 2026 Cerrado Tecnologia. Todos os direitos reservados.</span>
+            <span>Estabilidade e tecnologia operacional de ponta</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
