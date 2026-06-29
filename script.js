@@ -100,18 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 4. PARSER DE QUERY STRINGS PARA PRÉ-PREENCHIMENTO INTELIGENTE (CONTATO.HTML)
+    // 4. SISTEMA DE RASTREAMENTO DE CAMPANHAS E ATRIBUIÇÃO DE MARKETING (UTMs)
     // ==========================================================================
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const urlSearch = new URLSearchParams(window.location.search);
+
+    // 4.1. Capturar e persistir as UTMs da URL no sessionStorage
+    utmParams.forEach(param => {
+        const val = urlSearch.get(param);
+        if (val) {
+            sessionStorage.setItem(`cerrado_${param}`, val);
+        }
+    });
+
+    // 4.2. Definir a página de entrada (primeiro acesso do lead) se ainda não existir
+    if (!sessionStorage.getItem('cerrado_pagina_origem')) {
+        sessionStorage.setItem('cerrado_pagina_origem', window.location.href);
+    }
+
+    // 4.3. Pré-preenchimento inteligente do formulário de contato (contato.html)
     const formSegment = document.getElementById('segment');
     const formMessage = document.getElementById('message');
 
     if (formSegment || formMessage) {
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        const segmentoParam = urlParams.get('segmento');
-        const solucaoParam = urlParams.get('solucao');
+        // Pré-seleção e preenchimento de campos normais a partir da URL atual
+        const segmentoParam = urlSearch.get('segmento');
+        const solucaoParam = urlSearch.get('solucao');
 
-        // Pré-seleção pelo parâmetro "segmento"
         if (segmentoParam && formSegment) {
             const validSegments = ['postos', 'redes', 'gestores', 'hoteis', 'pousadas', 'resorts', 'clubes', 'parques'];
             if (validSegments.includes(segmentoParam)) {
@@ -119,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Pré-preenchimento da mensagem pelo parâmetro "solucao"
         if (solucaoParam && formMessage) {
             const solucaoNomes = {
                 'sgp': 'SGP Integrado',
@@ -133,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (solucaoNomes[solucaoParam]) {
                 formMessage.value = `Gostaria de solicitar uma demonstração e saber mais detalhes sobre a solução de: ${solucaoNomes[solucaoParam]}.`;
                 
-                // Mapeia automaticamente a solução para o segmento mais provável
                 if (formSegment) {
                     if (solucaoParam === 'sgp' || solucaoParam === 'automacao') {
                         formSegment.value = 'postos';
@@ -144,6 +157,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
+        }
+
+        // Preenchimento dos inputs ocultos de UTM e Origem a partir do sessionStorage
+        utmParams.forEach(param => {
+            const inputField = document.getElementById(param);
+            if (inputField) {
+                inputField.value = sessionStorage.getItem(`cerrado_${param}`) || '';
+            }
+        });
+
+        const inputOrigem = document.getElementById('pagina_origem');
+        if (inputOrigem) {
+            inputOrigem.value = sessionStorage.getItem('cerrado_pagina_origem') || window.location.href;
         }
     }
 
@@ -160,16 +186,47 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const company = document.getElementById('company') ? document.getElementById('company').value.trim() : '';
+            const role = document.getElementById('role') ? document.getElementById('role').value.trim() : '';
             const segmentSelect = document.getElementById('segment');
             const segmentText = segmentSelect.options[segmentSelect.selectedIndex].text;
             const messageVal = document.getElementById('message').value.trim();
 
             if (name && email && phone && messageVal) {
+                // Capturar valores ocultos para log de depuração
+                const utmSource = document.getElementById('utm_source')?.value || '';
+                const utmMedium = document.getElementById('utm_medium')?.value || '';
+                const utmCampaign = document.getElementById('utm_campaign')?.value || '';
+                const utmContent = document.getElementById('utm_content')?.value || '';
+                const utmTerm = document.getElementById('utm_term')?.value || '';
+                const originPage = document.getElementById('pagina_origem')?.value || '';
+
+                console.log('Lead Capturado com Sucesso:', {
+                    nome: name,
+                    email: email,
+                    telefone: phone,
+                    empresa: company,
+                    cargo: role,
+                    segmento: segmentSelect.value,
+                    mensagem: messageVal,
+                    pagina_origem: originPage,
+                    utm_source: utmSource,
+                    utm_medium: utmMedium,
+                    utm_campaign: utmCampaign,
+                    utm_content: utmContent,
+                    utm_term: utmTerm
+                });
+
                 // Número do WhatsApp comercial oficial da Cerrado Tech (Dossiê)
                 const phoneWhatsApp = "5562992171070";
                 
                 // Formatação estruturada da mensagem comercial
-                const waMessage = `Olá Cerrado Tech! Preenchi o formulário comercial do site.\n\n*Informações do Lead:*\n- Nome: ${name}\n- E-mail: ${email}\n- WhatsApp/Tel: ${phone}\n- Segmento: ${segmentText}\n- Desafio Operacional: ${messageVal}`;
+                let waMessage = `Olá Cerrado Tech! Preenchi o formulário comercial do site.\n\n*Informações do Lead:*\n- Nome: ${name}\n- Cargo: ${role}\n- Empresa: ${company}\n- E-mail: ${email}\n- WhatsApp/Tel: ${phone}\n- Segmento: ${segmentText}\n- Desafio Operacional: ${messageVal}`;
+                
+                if (utmSource || utmCampaign) {
+                    waMessage += `\n\n_Atribuição de Mkt: ${utmSource} / ${utmCampaign}_`;
+                }
+
                 const encodedWaMessage = encodeURIComponent(waMessage);
 
                 // Vincula o link personalizado ao botão do estado de sucesso

@@ -120,6 +120,24 @@
                     </div>
 
                     <div class="form-group-b2b">
+                        <label for="company">Nome da Empresa</label>
+                        <input type="text" id="company" name="company" required placeholder="Nome da empresa">
+                    </div>
+
+                    <div class="form-group-b2b">
+                        <label for="role">Cargo</label>
+                        <input type="text" id="role" name="role" required placeholder="Seu cargo (ex: Gerente, Diretor, Proprietário)">
+                    </div>
+
+                    <!-- Campos Ocultos de Rastreamento UTM e Origem -->
+                    <input type="hidden" id="utm_source" name="utm_source" value="">
+                    <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                    <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+                    <input type="hidden" id="utm_content" name="utm_content" value="">
+                    <input type="hidden" id="utm_term" name="utm_term" value="">
+                    <input type="hidden" id="pagina_origem" name="pagina_origem" value="">
+
+                    <div class="form-group-b2b">
                         <label for="segment">Segmento de Interesse</label>
                         <select id="segment" name="segment" required>
                             <option value="" disabled selected>Selecione o segmento</option>
