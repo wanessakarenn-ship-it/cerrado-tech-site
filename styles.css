@@ -467,6 +467,7 @@ section {
     z-index: 1;
 }
 
+
 .hero-section::before {
     content: "";
     position: absolute;
@@ -477,7 +478,7 @@ section {
     background-color: #0d0f12; /* Fundo de mistura */
     background-image: linear-gradient(to right, #0d0f12 40%, rgba(13, 15, 18, 0.85) 60%, rgba(13, 15, 18, 0.1) 100%), url('assets/images/Capturar.PNG');
     background-size: cover;
-    background-position: right center;
+    background-position: center; /* Centralizado conforme solicitado */
     background-repeat: no-repeat;
     background-blend-mode: multiply; /* Mescla fundo cinza claro com o fundo escuro */
     z-index: 1; /* Imagem de fundo no nível 1 */
