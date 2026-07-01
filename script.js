@@ -78,15 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (header) {
         const handleScroll = () => {
             if (window.scrollY > 30) {
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
-                header.style.backgroundColor = '#0a0b0d';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+                header.style.backgroundColor = '#ffffff';
                 header.style.height = '75px'; // Contrai sutilmente o menu ao rolar
                 if (window.innerWidth > 768) {
                     document.querySelector('.header-container').style.height = '75px';
                 }
             } else {
                 header.style.boxShadow = 'none';
-                header.style.backgroundColor = 'rgba(10, 11, 13, 0.85)';
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
                 header.style.height = '85px';
                 if (window.innerWidth > 768) {
                     document.querySelector('.header-container').style.height = '85px';
